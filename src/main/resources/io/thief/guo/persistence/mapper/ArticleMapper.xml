@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="io.thief.guo.persistence.mapper.ArticleMapper">
+
+	<!-- ======================= common queries =============================== -->
+	<insert id="insert" parameterType="Article" useGeneratedKeys="true" keyProperty="id">
+		insert into article
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null"> id, </if>
+			<if test="title != null"> title, </if>
+			<if test="toutiaoUrl != null"> toutiao_url, </if>
+			<if test="realUrl != null"> real_url, </if>
+			<if test="day != null"> day, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null"> #{id}, </if>
+			<if test="title != null"> #{title}, </if>
+			<if test="toutiaoUrl != null"> #{toutiaoUrl}, </if>
+			<if test="realUrl != null"> #{realUrl}, </if>
+			<if test="day != null"> #{day}, </if>
+		</trim>
+	</insert>
+
+	<select id="find" resultType="Article" parameterType="Long">
+		select
+		<include refid="fields" />
+		from 
+		article where id = #{id}
+	</select>
+	
+	<select id="findAll" resultType="Article" >
+		select
+		<include refid="fields" />
+		from 
+		article 
+	</select>
+	
+	<select id="findAllRealUrlNull" resultType="Article" >
+		select
+		<include refid="fields" />
+		from 
+		article where real_url is null order by id desc 
+	</select>
+	
+	<select id="getMaxDay" resultType="Date">
+		select 
+		max(day)
+		from article
+	</select>
+	
+	<select id="findByDayAndToutiaoUrl" resultType="Article" >
+		select
+		<include refid="fields" />
+		from 
+		article where day = #{day} and toutiao_url = #{toutiaoUrl} limit 1
+	</select>
+	
+	<update id="updateRealUrlById">
+		update article
+		set real_url = #{realUrl}
+		where id = #{id}
+	</update>
+
+	<sql id="fields">
+		id ,
+		title ,
+		toutiao_url as toutiaoUrl ,
+		real_url as realUrl ,
+		day 
+		
+	</sql>
+</mapper>
