@@ -1,4 +1,4 @@
-package io.thief.guo.persistence.model;
+package io.thief.toutiao.persistence.model;
 
 import java.util.Date;
 

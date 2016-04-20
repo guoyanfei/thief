@@ -1,4 +1,4 @@
-package io.thief.guo.tools;
+package io.thief.toutiao.tools;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

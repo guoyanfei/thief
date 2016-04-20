@@ -1,8 +1,8 @@
-package io.thief.guo;
+package io.thief.toutiao;
 
-import io.thief.guo.persistence.mapper.ArticleMapper;
-import io.thief.guo.persistence.model.Article;
-import io.thief.guo.tools.DateUtil;
+import io.thief.toutiao.persistence.mapper.ArticleMapper;
+import io.thief.toutiao.persistence.model.Article;
+import io.thief.toutiao.tools.DateUtil;
 
 import java.util.Date;
 import java.util.List;
