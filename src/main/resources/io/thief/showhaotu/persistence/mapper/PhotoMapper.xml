@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="io.thief.showhaotu.persistence.mapper.PhotoMapper">
+
+	<!-- ======================= common queries =============================== -->
+	<insert id="insert" parameterType="Photo" useGeneratedKeys="true" keyProperty="id">
+		insert into photo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null"> id, </if>
+			<if test="url != null"> url, </if>
+			<if test="isDownload != null"> is_download, </if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null"> #{id}, </if>
+			<if test="url != null"> #{url}, </if>
+			<if test="isDownload != null"> #{isDownload}, </if>
+		</trim>
+	</insert>
+
+	<select id="find" resultType="Photo" parameterType="Long">
+		select
+		<include refid="fields" />
+		from 
+		photo where id = #{id}
+	</select>
+
+	<select id="findAllUnDownload" resultType="Photo">
+		select
+		<include refid="fields" />
+		from 
+		photo where is_download = false
+	</select>
+	
+	<update id="consume" parameterType="Long">
+		update photo set is_download = true where id = #{id}
+	</update>
+	
+	<sql id="fields">
+		id ,
+		url ,
+		is_download
+	</sql>
+</mapper>
