@@ -39,7 +39,7 @@ public class Showhaotu {
 	private PhotoMapper photoMapper;
 
 	ExecutorService httpPool = Executors.newFixedThreadPool(100);
-	ExecutorService downloadPool = Executors.newFixedThreadPool(5);
+	ExecutorService downloadPool = Executors.newFixedThreadPool(20);
 
 	@Test
 	public void getUrl() throws InterruptedException {
@@ -68,7 +68,7 @@ public class Showhaotu {
 			post.setHeader("Connection", "keep-alive");
 			post.setHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 			// post.setHeader("Content-Length", "97");
-			post.setHeader("Cookie", "__cfduid=d6cafc5310f302cfa22ec3e179a37c20e1460980249; PHPSESSID=m3kmiml15q72u1r88uh3m4gar5; _gat=1; _ga=GA1.2.189059411.1460980252");
+			post.setHeader("Cookie", "__cfduid=d6cafc5310f302cfa22ec3e179a37c20e1460980249; PHPSESSID=atd1tlupsql1mn8k7akq4h2so6; _gat=1; _ga=GA1.2.189059411.1460980252");
 			post.setHeader("Host", "showhaotu.com");
 			post.setHeader("Origin", "http://showhaotu.com");
 			post.setHeader("Referer", "");
@@ -81,7 +81,7 @@ public class Showhaotu {
 			nvps.add(new BasicNameValuePair("list", "images"));
 			nvps.add(new BasicNameValuePair("sort", "date_desc"));
 			nvps.add(new BasicNameValuePair("action", "list"));
-			nvps.add(new BasicNameValuePair("auth_token", "1aa78554788042231dda0e29e02291cf50b80dc9"));
+			nvps.add(new BasicNameValuePair("auth_token", "6594ac56d6ed03578d71ae7bd9f60948ef33b39a"));
 			nvps.add(new BasicNameValuePair("page", "" + page));
 
 			post.setEntity(new UrlEncodedFormEntity(nvps));
@@ -161,7 +161,7 @@ public class Showhaotu {
 				}
 			});
 		}
-		Thread.sleep(600000);
+		Thread.sleep(60000000);
 	}
 
 	/***

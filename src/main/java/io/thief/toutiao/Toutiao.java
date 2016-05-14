@@ -43,7 +43,7 @@ public class Toutiao {
 
 	@Test
 	public void testSelenium() {
-		System.getProperties().setProperty("webdriver.chrome.driver", "/Users/gyf/Documents/software/chromedriver");
+		System.getProperties().setProperty("webdriver.chrome.driver", "/Users/gyf/Documents/software/application/chromedriver");
 		WebDriver driver = new ChromeDriver();
 
 		Date today = DateUtil.getDayDate(new Date());
